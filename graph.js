@@ -19,7 +19,46 @@ const jwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5OCIsImlhdCI6MTczOT
 //     // }
 
 // }
+let query = {
 
+    query1: `
+                    {
+                    user{
+                        firstName
+                        lastName
+                    
+                    }
+
+                    
+                    }
+
+            `,
+    
+    query2:`
+                {
+                    
+                    transaction(
+                                        where: { type: {_like: "skill%" } },
+                                        order_by: { amount: desc }
+                                    ) {
+                                        type
+                                        amount
+                                    }
+                    
+                    }
+            `,
+        
+            query3:`
+                {
+                user{
+                
+                    totalDown
+                    totalUp
+                }
+                
+                }
+            `
+}
 async function getdata() {
     const response = await fetch(Url, {
         method: 'POST',
@@ -35,6 +74,7 @@ async function getdata() {
 
                     
                     }
+
             `
         })
     })
