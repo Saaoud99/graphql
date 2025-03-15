@@ -1,53 +1,45 @@
-const DOMAIN_NAME = "zone01oujda.ma"
-const AUTH_URL =`${DOMAIN_NAME}/api/auth/signin`
-const GQL_URL = `${DOMAIN_NAME}/api/graphql-engine/v1/graphql`
+const DOMAIN_NAME = "https://learn.zone01oujda.ma";
+const AUTH_URL = `${DOMAIN_NAME}/api/auth/signin`;
+const GRAPHQL_URL = `${DOMAIN_NAME}/api/graphql-engine/v1/graphql`;
 
-
-async function Authorization(username,password) {
-    try{
-        let base = btoa(`${username}:${password}`)
-        const response = await fetch(AUTH_URL, {
-            method: 'POST',
-            headers: {
-                "Authorization": `Basic ${base}`,
-            },
-        })
-        const data = await response.json()
-        console.log(data)
-        return data
-    }catch(err){
-        console.log(err)
-        return err
-    }
+const Authenticate = async (username, password) => {
+  try {
+    const response = await fetch(AUTH_URL, {
+      method: "POST",
+      headers: {
+        Authorization: `Basic ${btoa(username + ":" + password)}`
+      }
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return { error: error.message };
+  }
 }
 
-async function Getdata(token,query){
-    try{
-        const response = await fetch(GQL_URL, {
-            method: 'POST',
-            headers: { "Authorization": `Bearer ${token}` },
-            body: JSON.stringify({
-                query: query
-            })
-        })
-    
-        const data = await response.json();
-        return data;
-    }catch(err){
-        console.log(err)
-        return err
-    }
+const GetData = async (token, query) => {
+  try {
+    const response = await fetch(GRAPHQL_URL, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({ query })
+    });
+    const data = await response.json();
+    return data;
+
+  } catch (error) {
+    return { error: error.message };
+  }
 }
 
-function IsAuthoris(){
-    let token= localStorage.getItem('token')
-    if (!token){
-        return false
-    }else{
-        return true
-    }
+const Authorized = () => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    return false;
+  }
+  return true;
 }
-export{Authorization,Getdata,IsAuthoris}
 
-
-
+export { Authenticate, GetData, Authorized };
