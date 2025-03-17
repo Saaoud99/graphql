@@ -104,8 +104,11 @@ if (location.pathname === "/profile") {
 
 if (location.pathname === '/login') {
     if (Authorized()) {
-        history.pushState('', '', "/profile");
-        location.reload();
+        // history.pushState('', '', "/profile");
+        // location.reload();
+        console.log(true);
+        
+        
     }
 
     const loginButton = document.querySelector('#submit');
@@ -115,6 +118,7 @@ if (location.pathname === '/login') {
             const pass = document.querySelector("#password").value;
             const jwt = await Authenticate(user, pass);
             localStorage.setItem("token", jwt);
+            window.location.href = "/profile"
         } catch (err) {
             console.error("Login error:", err);
         }
