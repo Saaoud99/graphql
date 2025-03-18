@@ -115,8 +115,8 @@ if (location.pathname === "/profile") {
 
 if (location.pathname === '/login') {
     if (Authorized()) {
-        // history.pushState('', '', "/profile");
-        // location.reload();
+        history.pushState('', '', "/profile");
+        location.reload();
         console.log(true);
         
         
@@ -256,14 +256,15 @@ function createTotale(profileData){
 }
 
 let logout = document.getElementById('logout');
-
-logout.addEventListener('click', () => {
-    localStorage.removeItem("token"); 
-    window.location.href = "/login"; 
-});
-
-if (location.pathname != '/login' && location.pathname != '/profile'){
-    localStorage.removeItem("token"); 
-    document.getElementById('erro').innerHTML = `<p>404 page not found !!</p>`;
-    return
+if (logout){
+    logout.addEventListener('click', () => {
+        localStorage.removeItem("token"); 
+        window.location.href = "/login"; 
+    });
 }
+
+// if (location.pathname != '/login' && location.pathname != '/profile'){
+//     localStorage.removeItem("token"); 
+//     document.getElementById('erro').innerHTML = `<p>404 page not found !!</p>`;
+//     return
+// }
