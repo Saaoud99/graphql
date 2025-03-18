@@ -261,3 +261,9 @@ logout.addEventListener('click', () => {
     localStorage.removeItem("token"); 
     window.location.href = "/login"; 
 });
+
+if (location.pathname != '/login' && location.pathname != '/profile'){
+    localStorage.removeItem("token"); 
+    document.getElementById('erro').innerHTML = `<p>404 page not found !!</p>`;
+    return
+}
