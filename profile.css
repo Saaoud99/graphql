@@ -1,0 +1,23 @@
+#ratio{
+    width: 450px;
+    /* height: 400px; */
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: auto;
+    background-color: aqua;
+    margin-top: 30px;
+}
+
+/* #graphs{
+    border: 2px solid black;
+    border-radius: 10px;
+} */
+
+#logout{
+    color: aliceblue;
+    border: 2px solid black;
+    border-radius: 2px;
+    display: inline-block;
+    background-color: brown;
+    
+}
