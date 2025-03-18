@@ -55,7 +55,7 @@ async function getProfileData() {
 
 async function DespalyProfile() {
     if (!Authorized()) {
-        history.pushState('', '', "/login");
+        history.pushState('', '', "/index.html");
         location.reload();
         return;
     }
@@ -67,7 +67,7 @@ async function DespalyProfile() {
         document.getElementById('erro').innerHTML = `<p>401 Unauthorized</p>`;
        
         
-       // window.location.href = "/login";
+       // window.location.href = "/index.html";
         return;
     }
 
@@ -102,20 +102,20 @@ async function DespalyProfile() {
 
 }
 
-if (location.pathname === "/profile") {
+if (location.pathname === "/profile.html") {
     if (Authorized()) {
-         history.pushState('', '', "/profile");
+         history.pushState('', '', "/profile.html");
         console.log(true);
         
         DespalyProfile();
     }else{
-        window.location.href = "/login"; 
+        window.location.href = "/index.html"; 
     }
 }
 
-if (location.pathname === '/login') {
+if (location.pathname === '/' || location.pathname === '/index.html') {
     if (Authorized()) {
-        history.pushState('', '', "/profile");
+        history.pushState('', '', "/profile.html");
         location.reload();
         console.log(true);
         
@@ -125,12 +125,13 @@ if (location.pathname === '/login') {
     const loginButton = document.querySelector('#submit');
     loginButton.addEventListener('click', async () => {
         try {
+            console.log("xxx ->", loginButton)
             const user = document.querySelector("#username").value;
             const pass = document.querySelector("#password").value;
             const jwt = await Authenticate(user, pass);
             
             localStorage.setItem("token", jwt);
-            window.location.href = "/profile"
+            window.location.href = "/profile.html"
         } catch (err) {
             console.error("Login error:", err);
         }
@@ -259,11 +260,11 @@ let logout = document.getElementById('logout');
 if (logout){
     logout.addEventListener('click', () => {
         localStorage.removeItem("token"); 
-        window.location.href = "/login"; 
+        window.location.href = "/index.html"; 
     });
 }
 
-// if (location.pathname != '/login' && location.pathname != '/profile'){
+// if (location.pathname != '/index.html' && location.pathname != '/profile.html'){
 //     localStorage.removeItem("token"); 
 //     document.getElementById('erro').innerHTML = `<p>404 page not found !!</p>`;
 //     return
