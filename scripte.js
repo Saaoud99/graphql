@@ -114,6 +114,7 @@ if (location.pathname === "/profile.html") {
 }
 
 if (location.pathname === '/' || location.pathname === '/index.html') {
+    console.log("vvvvv")
     if (Authorized()) {
         history.pushState('', '', "/profile.html");
         location.reload();
