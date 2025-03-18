@@ -1,4 +1,4 @@
-import { Authenticate, GetData, Authorized } from "/utils/dataFetch.js";
+import { Authenticate, GetData, Authorized } from "./utils/dataFetch.js";
 
 let profileData = {};
 
