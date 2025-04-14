@@ -162,7 +162,7 @@ function createSkillsGraphElement(skillTransactions) {
         rect.setAttribute("y", y);
         rect.setAttribute("width", 30);
         rect.setAttribute("height", barHeight);
-        rect.setAttribute("fill", "green");
+        rect.setAttribute("fill", "Navy");
         svg.appendChild(rect);
 
         const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
