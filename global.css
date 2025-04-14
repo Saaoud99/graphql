@@ -8,7 +8,7 @@ body{
     width: 100%;
     min-height: 100%;
     padding: 1rem;
-    /* background-color: black; */
+    background-color: rgb(173, 159, 27);
 }
 
 .loginBox{

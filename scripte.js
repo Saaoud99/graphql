@@ -147,7 +147,7 @@ function createSkillsGraphElement(skillTransactions) {
     const graphs = document.getElementById("graphs")
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("width", 860);
-    svg.setAttribute("height", 450);
+    svg.setAttribute("height", 550);
     svg.setAttribute("viewBox", "0 0 850 450");
     graphs.appendChild(svg);
 
@@ -181,7 +181,7 @@ function createSkillsGraphElement(skillTransactions) {
     const xAxis = document.createElementNS("http://www.w3.org/2000/svg", "line");
     xAxis.setAttribute("x1", 45);
     xAxis.setAttribute("y1", 350);
-    xAxis.setAttribute("x2", 680);
+    xAxis.setAttribute("x2", 700);
     xAxis.setAttribute("y2", 350);
     xAxis.setAttribute("stroke", "black");
     xAxis.setAttribute("stroke-width", "2");
@@ -238,7 +238,7 @@ function createTotale(profileData){
     const amountText = document.createElementNS("http://www.w3.org/2000/svg", "text");
         amountText.setAttribute("x", widthUp/2);
         amountText.setAttribute("y", 30);
-        amountText.textContent = `Toale Up ${(Up/1000000).toFixed(2)}MB`;
+        amountText.textContent = `Up ${(Up/1000000).toFixed(2)}MB`;
         svg.appendChild(amountText);
 
     const rectDown = document.createElementNS("http://www.w3.org/2000/svg", "rect");
@@ -251,7 +251,7 @@ function createTotale(profileData){
     const TextDown = document.createElementNS("http://www.w3.org/2000/svg", "text");
     TextDown.setAttribute("x", widthUp/2);
     TextDown.setAttribute("y", 80);
-    TextDown.textContent = `Toale Down ${(Down/1000000).toFixed(2)}MB`;
+    TextDown.textContent = `Down ${(Down/1000000).toFixed(2)}MB`;
     svg.appendChild(TextDown);
 
 }
