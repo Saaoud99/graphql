@@ -20,15 +20,16 @@ const queries = {
         }
     `,
     skills: `
-        {
-            transaction(
-                where: { type: { _like: "skill%" } },
-                distinct_on: type
-            ) {
-                type
-                amount
-            }
-        }
+{
+  transaction(
+    where: { type: { _like: "skill%" } },
+    order_by: [{ type: asc }, { amount: desc }],
+    distinct_on: type
+  ) {
+    type
+    amount
+  }
+}
     `,
 };
 
